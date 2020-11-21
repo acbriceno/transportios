@@ -1,0 +1,14 @@
+query stops{
+stops{
+   status
+   code
+   ... on StopsResponse{
+    stops{
+    id
+    name
+    lat
+    lon
+}
+}
+}
+}
