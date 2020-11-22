@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct transportiosApp: App {
+    let msg = QueryController()
     var body: some Scene {
         WindowGroup {
             ContentView()

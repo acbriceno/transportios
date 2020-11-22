@@ -14,6 +14,11 @@
 		1F8ABC382569A9E700351224 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 1F8ABC372569A9E700351224 /* Apollo */; };
 		1F8ABC3E2569AAA300351224 /* Query.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1F8ABC3D2569AAA300351224 /* Query.graphql */; };
 		1F8ABC462569AC3C00351224 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC452569AC3C00351224 /* API.swift */; };
+		1F8ABC49256A14D500351224 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC48256A14D500351224 /* Network.swift */; };
+		1F8ABC4C256A155400351224 /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */; };
+		1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */; };
+		1F8ABC52256A17C200351224 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC51256A17C200351224 /* Alert.swift */; };
+		1F8ABC72256A1B5A00351224 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC71256A1B5A00351224 /* Query.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		1F5BDF862569A87500D44240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F8ABC3D2569AAA300351224 /* Query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Query.graphql; sourceTree = "<group>"; };
 		1F8ABC452569AC3C00351224 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		1F8ABC48256A14D500351224 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
+		1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAddingInterceptor.swift; sourceTree = "<group>"; };
+		1F8ABC51256A17C200351224 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		1F8ABC71256A1B5A00351224 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,10 +71,15 @@
 				1F8ABC452569AC3C00351224 /* API.swift */,
 				1F8ABC3C2569AA8D00351224 /* GraphQL */,
 				1F5BDF7D2569A87400D44240 /* transportiosApp.swift */,
+				1F8ABC71256A1B5A00351224 /* Query.swift */,
 				1F5BDF7F2569A87400D44240 /* ContentView.swift */,
 				1F5BDF812569A87500D44240 /* Assets.xcassets */,
 				1F5BDF862569A87500D44240 /* Info.plist */,
 				1F5BDF832569A87500D44240 /* Preview Content */,
+				1F8ABC48256A14D500351224 /* Network.swift */,
+				1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */,
+				1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */,
+				1F8ABC51256A17C200351224 /* Alert.swift */,
 			);
 			path = transportios;
 			sourceTree = "<group>";
@@ -185,7 +200,12 @@
 			files = (
 				1F5BDF802569A87400D44240 /* ContentView.swift in Sources */,
 				1F8ABC462569AC3C00351224 /* API.swift in Sources */,
+				1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */,
+				1F8ABC4C256A155400351224 /* NetworkInterceptorProvider.swift in Sources */,
+				1F8ABC72256A1B5A00351224 /* Query.swift in Sources */,
+				1F8ABC49256A14D500351224 /* Network.swift in Sources */,
 				1F5BDF7E2569A87400D44240 /* transportiosApp.swift in Sources */,
+				1F8ABC52256A17C200351224 /* Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
