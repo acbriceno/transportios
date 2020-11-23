@@ -49,6 +49,151 @@ public enum AccessRole: RawRepresentable, Equatable, Hashable, CaseIterable, Apo
   }
 }
 
+public enum StopType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case terminal
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "TERMINAL": self = .terminal
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .terminal: return "TERMINAL"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: StopType, rhs: StopType) -> Bool {
+    switch (lhs, rhs) {
+      case (.terminal, .terminal): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [StopType] {
+    return [
+      .terminal,
+    ]
+  }
+}
+
+public enum RouteType: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case regular
+  case express
+  case nonstop
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "REGULAR": self = .regular
+      case "EXPRESS": self = .express
+      case "NONSTOP": self = .nonstop
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .regular: return "REGULAR"
+      case .express: return "EXPRESS"
+      case .nonstop: return "NONSTOP"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: RouteType, rhs: RouteType) -> Bool {
+    switch (lhs, rhs) {
+      case (.regular, .regular): return true
+      case (.express, .express): return true
+      case (.nonstop, .nonstop): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [RouteType] {
+    return [
+      .regular,
+      .express,
+      .nonstop,
+    ]
+  }
+}
+
+public enum Day: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case monday
+  case tuesday
+  case wednesday
+  case thursday
+  case friday
+  case saturday
+  case sunday
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "MONDAY": self = .monday
+      case "TUESDAY": self = .tuesday
+      case "WEDNESDAY": self = .wednesday
+      case "THURSDAY": self = .thursday
+      case "FRIDAY": self = .friday
+      case "SATURDAY": self = .saturday
+      case "SUNDAY": self = .sunday
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .monday: return "MONDAY"
+      case .tuesday: return "TUESDAY"
+      case .wednesday: return "WEDNESDAY"
+      case .thursday: return "THURSDAY"
+      case .friday: return "FRIDAY"
+      case .saturday: return "SATURDAY"
+      case .sunday: return "SUNDAY"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: Day, rhs: Day) -> Bool {
+    switch (lhs, rhs) {
+      case (.monday, .monday): return true
+      case (.tuesday, .tuesday): return true
+      case (.wednesday, .wednesday): return true
+      case (.thursday, .thursday): return true
+      case (.friday, .friday): return true
+      case (.saturday, .saturday): return true
+      case (.sunday, .sunday): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [Day] {
+    return [
+      .monday,
+      .tuesday,
+      .wednesday,
+      .thursday,
+      .friday,
+      .saturday,
+      .sunday,
+    ]
+  }
+}
+
 public final class BaseLoginMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -310,6 +455,9 @@ public final class StopsQuery: GraphQLQuery {
             name
             lat
             lon
+            type
+            location
+            active
           }
         }
       }
@@ -509,6 +657,9 @@ public final class StopsQuery: GraphQLQuery {
               GraphQLField("name", type: .nonNull(.scalar(String.self))),
               GraphQLField("lat", type: .nonNull(.scalar(Double.self))),
               GraphQLField("lon", type: .nonNull(.scalar(Double.self))),
+              GraphQLField("type", type: .nonNull(.scalar(StopType.self))),
+              GraphQLField("location", type: .nonNull(.scalar(String.self))),
+              GraphQLField("active", type: .nonNull(.scalar(Bool.self))),
             ]
           }
 
@@ -518,8 +669,8 @@ public final class StopsQuery: GraphQLQuery {
             self.resultMap = unsafeResultMap
           }
 
-          public init(id: GraphQLID, name: String, lat: Double, lon: Double) {
-            self.init(unsafeResultMap: ["__typename": "Stop", "id": id, "name": name, "lat": lat, "lon": lon])
+          public init(id: GraphQLID, name: String, lat: Double, lon: Double, type: StopType, location: String, active: Bool) {
+            self.init(unsafeResultMap: ["__typename": "Stop", "id": id, "name": name, "lat": lat, "lon": lon, "type": type, "location": location, "active": active])
           }
 
           public var __typename: String {
@@ -564,6 +715,514 @@ public final class StopsQuery: GraphQLQuery {
             }
             set {
               resultMap.updateValue(newValue, forKey: "lon")
+            }
+          }
+
+          public var type: StopType {
+            get {
+              return resultMap["type"]! as! StopType
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "type")
+            }
+          }
+
+          public var location: String {
+            get {
+              return resultMap["location"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "location")
+            }
+          }
+
+          public var active: Bool {
+            get {
+              return resultMap["active"]! as! Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "active")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class OperatorRoutesQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query operatorRoutes {
+      operatorRoutes {
+        __typename
+        status
+        code
+        ... on OperatorRoutesResponse {
+          operatorRoutes {
+            __typename
+            id
+            active
+            operatorId
+            routeType
+            route {
+              __typename
+              startStopId
+              endStopId
+            }
+            schedule {
+              __typename
+              day
+              departureTime
+              arrivalTime
+            }
+            intermediaries {
+              __typename
+              stopId
+              time
+            }
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "operatorRoutes"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("operatorRoutes", type: .nonNull(.object(OperatorRoute.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(operatorRoutes: OperatorRoute) {
+      self.init(unsafeResultMap: ["__typename": "Query", "operatorRoutes": operatorRoutes.resultMap])
+    }
+
+    public var operatorRoutes: OperatorRoute {
+      get {
+        return OperatorRoute(unsafeResultMap: resultMap["operatorRoutes"]! as! ResultMap)
+      }
+      set {
+        resultMap.updateValue(newValue.resultMap, forKey: "operatorRoutes")
+      }
+    }
+
+    public struct OperatorRoute: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["StopResponse", "StopsResponse", "OperatorRouteResponse", "OperatorRoutesResponse", "OperatorResponse", "PassResponse", "CommuterResponse", "BareOperatorResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLTypeCase(
+            variants: ["OperatorRoutesResponse": AsOperatorRoutesResponse.selections],
+            default: [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("status", type: .nonNull(.scalar(Bool.self))),
+              GraphQLField("code", type: .nonNull(.scalar(String.self))),
+            ]
+          )
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public static func makeStopResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "StopResponse", "status": status, "code": code])
+      }
+
+      public static func makeStopsResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "StopsResponse", "status": status, "code": code])
+      }
+
+      public static func makeOperatorRouteResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "OperatorRouteResponse", "status": status, "code": code])
+      }
+
+      public static func makeOperatorResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "OperatorResponse", "status": status, "code": code])
+      }
+
+      public static func makePassResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "PassResponse", "status": status, "code": code])
+      }
+
+      public static func makeCommuterResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "CommuterResponse", "status": status, "code": code])
+      }
+
+      public static func makeBareOperatorResponse(status: Bool, code: String) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "BareOperatorResponse", "status": status, "code": code])
+      }
+
+      public static func makeOperatorRoutesResponse(status: Bool, code: String, operatorRoutes: [AsOperatorRoutesResponse.OperatorRoute]? = nil) -> OperatorRoute {
+        return OperatorRoute(unsafeResultMap: ["__typename": "OperatorRoutesResponse", "status": status, "code": code, "operatorRoutes": operatorRoutes.flatMap { (value: [AsOperatorRoutesResponse.OperatorRoute]) -> [ResultMap] in value.map { (value: AsOperatorRoutesResponse.OperatorRoute) -> ResultMap in value.resultMap } }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var status: Bool {
+        get {
+          return resultMap["status"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var code: String {
+        get {
+          return resultMap["code"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "code")
+        }
+      }
+
+      public var asOperatorRoutesResponse: AsOperatorRoutesResponse? {
+        get {
+          if !AsOperatorRoutesResponse.possibleTypes.contains(__typename) { return nil }
+          return AsOperatorRoutesResponse(unsafeResultMap: resultMap)
+        }
+        set {
+          guard let newValue = newValue else { return }
+          resultMap = newValue.resultMap
+        }
+      }
+
+      public struct AsOperatorRoutesResponse: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["OperatorRoutesResponse"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("status", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("code", type: .nonNull(.scalar(String.self))),
+            GraphQLField("operatorRoutes", type: .list(.nonNull(.object(OperatorRoute.selections)))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(status: Bool, code: String, operatorRoutes: [OperatorRoute]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "OperatorRoutesResponse", "status": status, "code": code, "operatorRoutes": operatorRoutes.flatMap { (value: [OperatorRoute]) -> [ResultMap] in value.map { (value: OperatorRoute) -> ResultMap in value.resultMap } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var status: Bool {
+          get {
+            return resultMap["status"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "status")
+          }
+        }
+
+        public var code: String {
+          get {
+            return resultMap["code"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "code")
+          }
+        }
+
+        public var operatorRoutes: [OperatorRoute]? {
+          get {
+            return (resultMap["operatorRoutes"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [OperatorRoute] in value.map { (value: ResultMap) -> OperatorRoute in OperatorRoute(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.flatMap { (value: [OperatorRoute]) -> [ResultMap] in value.map { (value: OperatorRoute) -> ResultMap in value.resultMap } }, forKey: "operatorRoutes")
+          }
+        }
+
+        public struct OperatorRoute: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["OperatorRoute"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("active", type: .nonNull(.scalar(Bool.self))),
+              GraphQLField("operatorId", type: .nonNull(.scalar(String.self))),
+              GraphQLField("routeType", type: .nonNull(.scalar(RouteType.self))),
+              GraphQLField("route", type: .nonNull(.object(Route.selections))),
+              GraphQLField("schedule", type: .list(.nonNull(.object(Schedule.selections)))),
+              GraphQLField("intermediaries", type: .list(.nonNull(.object(Intermediary.selections)))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, active: Bool, operatorId: String, routeType: RouteType, route: Route, schedule: [Schedule]? = nil, intermediaries: [Intermediary]? = nil) {
+            self.init(unsafeResultMap: ["__typename": "OperatorRoute", "id": id, "active": active, "operatorId": operatorId, "routeType": routeType, "route": route.resultMap, "schedule": schedule.flatMap { (value: [Schedule]) -> [ResultMap] in value.map { (value: Schedule) -> ResultMap in value.resultMap } }, "intermediaries": intermediaries.flatMap { (value: [Intermediary]) -> [ResultMap] in value.map { (value: Intermediary) -> ResultMap in value.resultMap } }])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var active: Bool {
+            get {
+              return resultMap["active"]! as! Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "active")
+            }
+          }
+
+          public var operatorId: String {
+            get {
+              return resultMap["operatorId"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "operatorId")
+            }
+          }
+
+          public var routeType: RouteType {
+            get {
+              return resultMap["routeType"]! as! RouteType
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "routeType")
+            }
+          }
+
+          public var route: Route {
+            get {
+              return Route(unsafeResultMap: resultMap["route"]! as! ResultMap)
+            }
+            set {
+              resultMap.updateValue(newValue.resultMap, forKey: "route")
+            }
+          }
+
+          public var schedule: [Schedule]? {
+            get {
+              return (resultMap["schedule"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Schedule] in value.map { (value: ResultMap) -> Schedule in Schedule(unsafeResultMap: value) } }
+            }
+            set {
+              resultMap.updateValue(newValue.flatMap { (value: [Schedule]) -> [ResultMap] in value.map { (value: Schedule) -> ResultMap in value.resultMap } }, forKey: "schedule")
+            }
+          }
+
+          public var intermediaries: [Intermediary]? {
+            get {
+              return (resultMap["intermediaries"] as? [ResultMap]).flatMap { (value: [ResultMap]) -> [Intermediary] in value.map { (value: ResultMap) -> Intermediary in Intermediary(unsafeResultMap: value) } }
+            }
+            set {
+              resultMap.updateValue(newValue.flatMap { (value: [Intermediary]) -> [ResultMap] in value.map { (value: Intermediary) -> ResultMap in value.resultMap } }, forKey: "intermediaries")
+            }
+          }
+
+          public struct Route: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["Route"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("startStopId", type: .nonNull(.scalar(String.self))),
+                GraphQLField("endStopId", type: .nonNull(.scalar(String.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(startStopId: String, endStopId: String) {
+              self.init(unsafeResultMap: ["__typename": "Route", "startStopId": startStopId, "endStopId": endStopId])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var startStopId: String {
+              get {
+                return resultMap["startStopId"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "startStopId")
+              }
+            }
+
+            public var endStopId: String {
+              get {
+                return resultMap["endStopId"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "endStopId")
+              }
+            }
+          }
+
+          public struct Schedule: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["Schedule"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("day", type: .nonNull(.scalar(Day.self))),
+                GraphQLField("departureTime", type: .nonNull(.scalar(String.self))),
+                GraphQLField("arrivalTime", type: .nonNull(.scalar(String.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(day: Day, departureTime: String, arrivalTime: String) {
+              self.init(unsafeResultMap: ["__typename": "Schedule", "day": day, "departureTime": departureTime, "arrivalTime": arrivalTime])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var day: Day {
+              get {
+                return resultMap["day"]! as! Day
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "day")
+              }
+            }
+
+            public var departureTime: String {
+              get {
+                return resultMap["departureTime"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "departureTime")
+              }
+            }
+
+            public var arrivalTime: String {
+              get {
+                return resultMap["arrivalTime"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "arrivalTime")
+              }
+            }
+          }
+
+          public struct Intermediary: GraphQLSelectionSet {
+            public static let possibleTypes: [String] = ["Intermediary"]
+
+            public static var selections: [GraphQLSelection] {
+              return [
+                GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("stopId", type: .nonNull(.scalar(String.self))),
+                GraphQLField("time", type: .nonNull(.scalar(String.self))),
+              ]
+            }
+
+            public private(set) var resultMap: ResultMap
+
+            public init(unsafeResultMap: ResultMap) {
+              self.resultMap = unsafeResultMap
+            }
+
+            public init(stopId: String, time: String) {
+              self.init(unsafeResultMap: ["__typename": "Intermediary", "stopId": stopId, "time": time])
+            }
+
+            public var __typename: String {
+              get {
+                return resultMap["__typename"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "__typename")
+              }
+            }
+
+            public var stopId: String {
+              get {
+                return resultMap["stopId"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "stopId")
+              }
+            }
+
+            public var time: String {
+              get {
+                return resultMap["time"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "time")
+              }
             }
           }
         }

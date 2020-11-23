@@ -8,7 +8,39 @@ stops{
     name
     lat
     lon
+    type
+    location
+    active
 }
+}
+}
+}
+
+query operatorRoutes{
+    operatorRoutes{
+        status
+        code
+        ... on OperatorRoutesResponse{
+            operatorRoutes{
+                id
+                active
+                operatorId
+                routeType
+                route{
+                    startStopId
+                    endStopId
+                }
+                schedule{
+                    day
+                    departureTime
+                    arrivalTime
+                }
+                intermediaries{
+                stopId
+                time
+                }
+            }
+    
 }
 }
 }

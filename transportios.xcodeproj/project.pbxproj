@@ -24,6 +24,8 @@
 		1F8ABC83256AC6C200351224 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC82256AC6C200351224 /* LoginView.swift */; };
 		1F8ABC87256B357700351224 /* OperatorPassScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */; };
 		1F8ABC8A256B488D00351224 /* OperatorPassScaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */; };
+		1FAEBDB3256B73C60035D991 /* OperatorRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */; };
+		1FAEBDB7256B7D090035D991 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBDB6256B7D090035D991 /* Stop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		1F8ABC82256AC6C200351224 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorPassScannerView.swift; sourceTree = "<group>"; };
 		1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorPassScaner.swift; sourceTree = "<group>"; };
+		1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorRoute.swift; sourceTree = "<group>"; };
+		1FAEBDB6256B7D090035D991 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 				1F5BDF7F2569A87400D44240 /* ContentView.swift */,
 				1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */,
 				1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */,
+				1FAEBDB6256B7D090035D991 /* Stop.swift */,
 				1F8ABC74256A204300351224 /* AccountManager.swift */,
 				1F8ABC82256AC6C200351224 /* LoginView.swift */,
 				1F8ABC71256A1B5A00351224 /* Query.swift */,
@@ -91,6 +96,7 @@
 				1F8ABC7F256A2A2300351224 /* ApolloNet */,
 				1F5BDF832569A87500D44240 /* Preview Content */,
 				1F5BDF812569A87500D44240 /* Assets.xcassets */,
+				1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */,
 			);
 			path = transportios;
 			sourceTree = "<group>";
@@ -229,7 +235,9 @@
 				1F8ABC4C256A155400351224 /* NetworkInterceptorProvider.swift in Sources */,
 				1F8ABC72256A1B5A00351224 /* Query.swift in Sources */,
 				1F8ABC75256A204300351224 /* AccountManager.swift in Sources */,
+				1FAEBDB7256B7D090035D991 /* Stop.swift in Sources */,
 				1F8ABC49256A14D500351224 /* Network.swift in Sources */,
+				1FAEBDB3256B73C60035D991 /* OperatorRoute.swift in Sources */,
 				1F5BDF7E2569A87400D44240 /* transportiosApp.swift in Sources */,
 				1F8ABC83256AC6C200351224 /* LoginView.swift in Sources */,
 				1F8ABC8A256B488D00351224 /* OperatorPassScaner.swift in Sources */,
