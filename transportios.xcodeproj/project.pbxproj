@@ -19,6 +19,11 @@
 		1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */; };
 		1F8ABC52256A17C200351224 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC51256A17C200351224 /* Alert.swift */; };
 		1F8ABC72256A1B5A00351224 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC71256A1B5A00351224 /* Query.swift */; };
+		1F8ABC75256A204300351224 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC74256A204300351224 /* AccountManager.swift */; };
+		1F8ABC7C256A297900351224 /* Mutation.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1F8ABC7B256A297900351224 /* Mutation.graphql */; };
+		1F8ABC83256AC6C200351224 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC82256AC6C200351224 /* LoginView.swift */; };
+		1F8ABC87256B357700351224 /* OperatorPassScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */; };
+		1F8ABC8A256B488D00351224 /* OperatorPassScaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAddingInterceptor.swift; sourceTree = "<group>"; };
 		1F8ABC51256A17C200351224 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		1F8ABC71256A1B5A00351224 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		1F8ABC74256A204300351224 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		1F8ABC7B256A297900351224 /* Mutation.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Mutation.graphql; sourceTree = "<group>"; };
+		1F8ABC82256AC6C200351224 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorPassScannerView.swift; sourceTree = "<group>"; };
+		1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorPassScaner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,18 +78,19 @@
 		1F5BDF7C2569A87400D44240 /* transportios */ = {
 			isa = PBXGroup;
 			children = (
-				1F8ABC452569AC3C00351224 /* API.swift */,
-				1F8ABC3C2569AA8D00351224 /* GraphQL */,
 				1F5BDF7D2569A87400D44240 /* transportiosApp.swift */,
-				1F8ABC71256A1B5A00351224 /* Query.swift */,
 				1F5BDF7F2569A87400D44240 /* ContentView.swift */,
-				1F5BDF812569A87500D44240 /* Assets.xcassets */,
+				1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */,
+				1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */,
+				1F8ABC74256A204300351224 /* AccountManager.swift */,
+				1F8ABC82256AC6C200351224 /* LoginView.swift */,
+				1F8ABC71256A1B5A00351224 /* Query.swift */,
+				1F8ABC452569AC3C00351224 /* API.swift */,
 				1F5BDF862569A87500D44240 /* Info.plist */,
+				1F8ABC3C2569AA8D00351224 /* GraphQL */,
+				1F8ABC7F256A2A2300351224 /* ApolloNet */,
 				1F5BDF832569A87500D44240 /* Preview Content */,
-				1F8ABC48256A14D500351224 /* Network.swift */,
-				1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */,
-				1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */,
-				1F8ABC51256A17C200351224 /* Alert.swift */,
+				1F5BDF812569A87500D44240 /* Assets.xcassets */,
 			);
 			path = transportios;
 			sourceTree = "<group>";
@@ -96,8 +107,20 @@
 			isa = PBXGroup;
 			children = (
 				1F8ABC3D2569AAA300351224 /* Query.graphql */,
+				1F8ABC7B256A297900351224 /* Mutation.graphql */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		1F8ABC7F256A2A2300351224 /* ApolloNet */ = {
+			isa = PBXGroup;
+			children = (
+				1F8ABC48256A14D500351224 /* Network.swift */,
+				1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */,
+				1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */,
+				1F8ABC51256A17C200351224 /* Alert.swift */,
+			);
+			path = ApolloNet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +189,7 @@
 			files = (
 				1F5BDF852569A87500D44240 /* Preview Assets.xcassets in Resources */,
 				1F8ABC3E2569AAA300351224 /* Query.graphql in Resources */,
+				1F8ABC7C256A297900351224 /* Mutation.graphql in Resources */,
 				1F5BDF822569A87500D44240 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,10 +225,14 @@
 				1F5BDF802569A87400D44240 /* ContentView.swift in Sources */,
 				1F8ABC462569AC3C00351224 /* API.swift in Sources */,
 				1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */,
+				1F8ABC87256B357700351224 /* OperatorPassScannerView.swift in Sources */,
 				1F8ABC4C256A155400351224 /* NetworkInterceptorProvider.swift in Sources */,
 				1F8ABC72256A1B5A00351224 /* Query.swift in Sources */,
+				1F8ABC75256A204300351224 /* AccountManager.swift in Sources */,
 				1F8ABC49256A14D500351224 /* Network.swift in Sources */,
 				1F5BDF7E2569A87400D44240 /* transportiosApp.swift in Sources */,
+				1F8ABC83256AC6C200351224 /* LoginView.swift in Sources */,
+				1F8ABC8A256B488D00351224 /* OperatorPassScaner.swift in Sources */,
 				1F8ABC52256A17C200351224 /* Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

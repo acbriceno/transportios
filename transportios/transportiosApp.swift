@@ -9,10 +9,13 @@ import SwiftUI
 
 @main
 struct transportiosApp: App {
-    let msg = QueryController()
+    //let msg = QueryController()
+    let am = AccountManager()
+
     var body: some Scene {
+        //let _: () = am.authenticate(email: "as", password: "asd")
         WindowGroup {
-            ContentView()
+            LoginView(authViewModel: am)
         }
     }
 }

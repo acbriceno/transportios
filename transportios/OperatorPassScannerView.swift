@@ -1,26 +1,21 @@
 //
-//  ContentView.swift
+//  OperatorPassScannerView.swift
 //  transportios
 //
-//  Created by grid on 2020-11-21.
+//  Created by grid on 2020-11-22.
 //
+
 
 import SwiftUI
 
-struct ContentView: View {
+struct OperatorPassScanerView: View {
     var body: some View {
         VStack{
-        Text("Hello, world!")
+        Text("Scan")
             .padding()
         }
         .navigationBarTitle("")
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

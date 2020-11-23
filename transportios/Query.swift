@@ -12,7 +12,9 @@ class QueryController{
         Network.shared.apollo.fetch(query: StopsQuery()) { result in
           switch result {
           case .success(let graphQLResult):
-            print("Success! Result: \(graphQLResult)")
+            //print("Success! Result: \(graphQLResult)")
+            let staus = graphQLResult.data?.stops.asStopsResponse?.status
+            print(staus!)
           case .failure(let error):
             print("Failure! Error: \(error)")
           }

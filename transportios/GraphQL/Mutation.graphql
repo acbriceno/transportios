@@ -1,0 +1,17 @@
+mutation baseLogin($email: String!, $password: String!){
+    baseLogin(email: $email, password: $password){
+      token
+      user{
+      id
+      firstName
+      lastName
+      complete
+      role{
+      role
+      id
+        }
+        
+    }
+}
+}
+

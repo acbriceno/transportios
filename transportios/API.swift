@@ -4,6 +4,296 @@
 import Apollo
 import Foundation
 
+public enum AccessRole: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  case admin
+  case `operator`
+  case commuter
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "ADMIN": self = .admin
+      case "OPERATOR": self = .operator
+      case "COMMUTER": self = .commuter
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .admin: return "ADMIN"
+      case .operator: return "OPERATOR"
+      case .commuter: return "COMMUTER"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: AccessRole, rhs: AccessRole) -> Bool {
+    switch (lhs, rhs) {
+      case (.admin, .admin): return true
+      case (.operator, .operator): return true
+      case (.commuter, .commuter): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+
+  public static var allCases: [AccessRole] {
+    return [
+      .admin,
+      .operator,
+      .commuter,
+    ]
+  }
+}
+
+public final class BaseLoginMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation baseLogin($email: String!, $password: String!) {
+      baseLogin(email: $email, password: $password) {
+        __typename
+        token
+        user {
+          __typename
+          id
+          firstName
+          lastName
+          complete
+          role {
+            __typename
+            role
+            id
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "baseLogin"
+
+  public var email: String
+  public var password: String
+
+  public init(email: String, password: String) {
+    self.email = email
+    self.password = password
+  }
+
+  public var variables: GraphQLMap? {
+    return ["email": email, "password": password]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("baseLogin", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .object(BaseLogin.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(baseLogin: BaseLogin? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "baseLogin": baseLogin.flatMap { (value: BaseLogin) -> ResultMap in value.resultMap }])
+    }
+
+    public var baseLogin: BaseLogin? {
+      get {
+        return (resultMap["baseLogin"] as? ResultMap).flatMap { BaseLogin(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "baseLogin")
+      }
+    }
+
+    public struct BaseLogin: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["AuthData"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("token", type: .nonNull(.scalar(String.self))),
+          GraphQLField("user", type: .object(User.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(token: String, user: User? = nil) {
+        self.init(unsafeResultMap: ["__typename": "AuthData", "token": token, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var token: String {
+        get {
+          return resultMap["token"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "token")
+        }
+      }
+
+      public var user: User? {
+        get {
+          return (resultMap["user"] as? ResultMap).flatMap { User(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "user")
+        }
+      }
+
+      public struct User: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["User"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("firstName", type: .nonNull(.scalar(String.self))),
+            GraphQLField("lastName", type: .nonNull(.scalar(String.self))),
+            GraphQLField("complete", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("role", type: .nonNull(.object(Role.selections))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, firstName: String, lastName: String, complete: Bool, role: Role) {
+          self.init(unsafeResultMap: ["__typename": "User", "id": id, "firstName": firstName, "lastName": lastName, "complete": complete, "role": role.resultMap])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var firstName: String {
+          get {
+            return resultMap["firstName"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "firstName")
+          }
+        }
+
+        public var lastName: String {
+          get {
+            return resultMap["lastName"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "lastName")
+          }
+        }
+
+        public var complete: Bool {
+          get {
+            return resultMap["complete"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "complete")
+          }
+        }
+
+        public var role: Role {
+          get {
+            return Role(unsafeResultMap: resultMap["role"]! as! ResultMap)
+          }
+          set {
+            resultMap.updateValue(newValue.resultMap, forKey: "role")
+          }
+        }
+
+        public struct Role: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Role"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("role", type: .scalar(AccessRole.self)),
+              GraphQLField("id", type: .nonNull(.list(.nonNull(.scalar(GraphQLID.self))))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(role: AccessRole? = nil, id: [GraphQLID]) {
+            self.init(unsafeResultMap: ["__typename": "Role", "role": role, "id": id])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var role: AccessRole? {
+            get {
+              return resultMap["role"] as? AccessRole
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "role")
+            }
+          }
+
+          public var id: [GraphQLID] {
+            get {
+              return resultMap["id"]! as! [GraphQLID]
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class StopsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
