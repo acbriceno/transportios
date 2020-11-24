@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
-
+import CodeScanner
 struct ContentView: View {
+    
     var body: some View {
+      
         VStack{
-        Text("Hellodfsdd, wordfdsfsdld!")
-            .padding()
+        Text("Content")
             .background(Color.blue)
         }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+   
+
     }
 }
 

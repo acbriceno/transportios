@@ -19,16 +19,10 @@ struct OperatorPassScanerView: View {
     @State private var scanReady = false
     @State private var bothSelected = false
     var body: some View {
-        NavigationView{
+        VStack{
             VStack{
-                NavigationLink(
-                    destination: ContentView(),
-                    isActive: $scanReady
-                    ){
-                    EmptyView()
-                }
+
             Form{
-             
                 
                 Picker("Route", selection: $selectedRoute) {
                     ForEach(opsModel.operatorRoutes, id: \.self) {
@@ -53,6 +47,8 @@ struct OperatorPassScanerView: View {
                     }
                 }
                 .onChange(of: selectedRoute, perform: { value in
+                    self.bothSelected = false
+                    self.selectedStop  = Stop()
                     opsModel.createScanningStops(operatorRouteId: selectedRoute.id)
                     })
                 
@@ -81,6 +77,12 @@ struct OperatorPassScanerView: View {
                 
             }
         }
+            NavigationLink(
+                destination: ScannerTestView(),
+                isActive: $scanReady
+                ){
+                EmptyView()
+            }
         
         }
         .navigationBarTitle("Pass Scanner")

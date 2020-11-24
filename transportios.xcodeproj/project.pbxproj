@@ -26,6 +26,9 @@
 		1F8ABC8A256B488D00351224 /* OperatorPassScaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */; };
 		1FAEBDB3256B73C60035D991 /* OperatorRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */; };
 		1FAEBDB7256B7D090035D991 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAEBDB6256B7D090035D991 /* Stop.swift */; };
+		1FCBD200256D587A0047DB21 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 1FCBD1FF256D587A0047DB21 /* CodeScanner */; };
+		1FCBD204256D671A0047DB21 /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 1FCBD203256D671A0047DB21 /* CarBode */; };
+		1FCBD207256D67420047DB21 /* ScannerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBD206256D67420047DB21 /* ScannerTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,7 @@
 		1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorPassScaner.swift; sourceTree = "<group>"; };
 		1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorRoute.swift; sourceTree = "<group>"; };
 		1FAEBDB6256B7D090035D991 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		1FCBD206256D67420047DB21 /* ScannerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FCBD204256D671A0047DB21 /* CarBode in Frameworks */,
+				1FCBD200256D587A0047DB21 /* CodeScanner in Frameworks */,
 				1F8ABC382569A9E700351224 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +90,7 @@
 			children = (
 				1F5BDF7D2569A87400D44240 /* transportiosApp.swift */,
 				1F5BDF7F2569A87400D44240 /* ContentView.swift */,
+				1FCBD206256D67420047DB21 /* ScannerTestView.swift */,
 				1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */,
 				1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */,
 				1FAEBDB6256B7D090035D991 /* Stop.swift */,
@@ -148,6 +155,8 @@
 			name = transportios;
 			packageProductDependencies = (
 				1F8ABC372569A9E700351224 /* Apollo */,
+				1FCBD1FF256D587A0047DB21 /* CodeScanner */,
+				1FCBD203256D671A0047DB21 /* CarBode */,
 			);
 			productName = transportios;
 			productReference = 1F5BDF7A2569A87400D44240 /* transportios.app */;
@@ -178,6 +187,8 @@
 			mainGroup = 1F5BDF712569A87400D44240;
 			packageReferences = (
 				1F8ABC362569A9E700351224 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				1FCBD1FE256D587A0047DB21 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				1FCBD202256D671A0047DB21 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */,
 			);
 			productRefGroup = 1F5BDF7B2569A87400D44240 /* Products */;
 			projectDirPath = "";
@@ -229,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F5BDF802569A87400D44240 /* ContentView.swift in Sources */,
+				1FCBD207256D67420047DB21 /* ScannerTestView.swift in Sources */,
 				1F8ABC462569AC3C00351224 /* API.swift in Sources */,
 				1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */,
 				1F8ABC87256B357700351224 /* OperatorPassScannerView.swift in Sources */,
@@ -299,7 +311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -354,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -374,7 +386,7 @@
 				DEVELOPMENT_TEAM = 36278HUZ5P;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = transportios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,7 +408,7 @@
 				DEVELOPMENT_TEAM = 36278HUZ5P;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = transportios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,6 +452,22 @@
 				minimumVersion = 0.37.0;
 			};
 		};
+		1FCBD1FE256D587A0047DB21 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+		1FCBD202256D671A0047DB21 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/heart/CarBode-Barcode-Scanner-For-SwiftUI";
+			requirement = {
+				branch = 2.1.2;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -447,6 +475,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1F8ABC362569A9E700351224 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		1FCBD1FF256D587A0047DB21 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FCBD1FE256D587A0047DB21 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		1FCBD203256D671A0047DB21 /* CarBode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FCBD202256D671A0047DB21 /* XCRemoteSwiftPackageReference "CarBode-Barcode-Scanner-For-SwiftUI" */;
+			productName = CarBode;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

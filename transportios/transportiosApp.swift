@@ -16,6 +16,8 @@ struct transportiosApp: App {
         //let _: () = am.authenticate(email: "as", password: "asd")
         WindowGroup {
             LoginView(authViewModel: am)
+            //ContentView()
+            //ScannerTestView()
         }
     }
 }
