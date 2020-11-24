@@ -60,6 +60,7 @@ struct LoginView: View{
                 })
             }
         }
+        .background(Color.blue)
      
    
     }

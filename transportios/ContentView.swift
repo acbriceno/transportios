@@ -10,11 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack{
-        Text("Hello, world!")
+        Text("Hellodfsdd, wordfdsfsdld!")
             .padding()
+            .background(Color.blue)
         }
         .navigationBarTitle("")
-        .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
 }

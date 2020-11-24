@@ -16,6 +16,10 @@ struct Stop : Hashable {
     var location: String = ""
     var active: Bool = false
     
+    init(){
+        
+    }
+    
     init(id: String, name: String){
         self.id = id
         self.name = name

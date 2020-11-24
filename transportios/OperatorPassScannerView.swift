@@ -8,55 +8,89 @@
 
 import SwiftUI
 
+
+
+
 struct OperatorPassScanerView: View {
     @ObservedObject var opsModel = OperatorPassScanner()
     @State var selectedScanningStop = [Stop]()
     @State var selectedRoute = OperatorRoute()
+    @State var selectedStop = Stop()
+    @State private var scanReady = false
+    @State private var bothSelected = false
     var body: some View {
-        
-        VStack{
-            Text("Select Operator Route")
-                .padding()
-            Picker("Select Route", selection: $selectedRoute) {
-                ForEach(opsModel.operatorRoutes, id: \.self) {
-                    operatorRoute in
-                    VStack{
-                    Text(opsModel.getStops(stopId: operatorRoute.route.startStopId) + "->")
-                        .minimumScaleFactor(0.5)
-    
-                        Text( opsModel.getStops(stopId: operatorRoute.route.endStopId))
-                            .minimumScaleFactor(0.5)
-                        
-                    }
+        NavigationView{
+            VStack{
+                NavigationLink(
+                    destination: ContentView(),
+                    isActive: $scanReady
+                    ){
+                    EmptyView()
                 }
-            }
-            .onChange(of: selectedRoute, perform: { value in
-                opsModel.createScanningStops(operatorRouteId: selectedRoute.id)
-            })
-            .padding(5)
+            Form{
+             
+                
+                Picker("Route", selection: $selectedRoute) {
+                    ForEach(opsModel.operatorRoutes, id: \.self) {
+                        operatorRoute in
+                        
+                        
+                        HStack{
+                            VStack{
+                                Text("Departure").padding(2)
+                                Text("Arrival").padding(2)
+                            }
+                            VStack{
+                                Text(opsModel.getStops(stopId: operatorRoute.route.startStopId))
+                                    .padding(2)
             
-            if (opsModel.scanningStops.count != 0){
-                Text("Select Scanning Stop")
-                Picker("Select Scanning Stop", selection: $selectedScanningStop) {
-                    ForEach(opsModel.scanningStops, id: \.self) {
-                        scanningStop in
-                        VStack{
-                            Text(scanningStop.name)
-                            .minimumScaleFactor(0.5)
-    
+                                Text(opsModel.getStops(stopId: operatorRoute.route.endStopId))
+                                    .padding(2)
+                            }
                             
                         }
+      
                     }
-                    
-                }.padding(5)
+                }
+                .onChange(of: selectedRoute, perform: { value in
+                    opsModel.createScanningStops(operatorRouteId: selectedRoute.id)
+                    })
+                
+                if (opsModel.scanningStops.count != 0){
+                   Picker("Scanning Stop", selection: $selectedStop) {
+                       ForEach(opsModel.scanningStops, id: \.self) {
+                           scanningStop in
+                           VStack{
+                               Text(scanningStop.name)
+                               .minimumScaleFactor(0.5)
+                           }
+                       }
+   
+                   }
+                   .onChange(of: selectedStop, perform: { value in
+                        self.bothSelected = true
+                   })
+                    if(bothSelected){
+                        Section{
+                            Button("Scan Pass", action: {
+                                self.scanReady = true
+                            })
+                        }
+                    }
+
+                
             }
-          
-            Text("Scan")
-            .padding()
         }
-        .navigationBarTitle("")
+        
+        }
+        .navigationBarTitle("Pass Scanner")
+        }
         .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
     }
 }
-//opsModel.getStops(stopId: opsModel.operatorRoutes[index].route.startStopId)
+
+struct OperatorPassScannerView_Previews: PreviewProvider {
+    static var previews: some View {
+      OperatorPassScanerView()
+    }
+}

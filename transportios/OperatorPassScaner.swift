@@ -58,9 +58,7 @@ class OperatorPassScanner: ObservableObject{
                         self.stops.append(tempStop)
                     }
                 }
-                
             }
-            print(self.stops)
                 
           case .failure(let error):
             print("Failure! Error: \(error)")
@@ -84,8 +82,6 @@ class OperatorPassScanner: ObservableObject{
                         self.operatorRoutes.append(tempRoute)
                     }
                 }
-                print(self.operatorRoutes)
-                
             }
          
           case .failure(let error):
