@@ -85,6 +85,7 @@ class OperatorPassScanner: ObservableObject{
                         tempOpRoutes.append(tempRoute)
                     }
                     DispatchQueue.main.async {
+                        self.objectWillChange.send()
                         self.operatorRoutes = tempOpRoutes
                     }
                     

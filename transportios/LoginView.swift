@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View{
-   @ObservedObject var authViewModel: AccountManager
+    @ObservedObject var authViewModel: AccountManager
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var action = false
@@ -17,7 +17,7 @@ struct LoginView: View{
 
     var body: some View {
 
-        NavigationView{
+        VStack{
             VStack{
                     NavigationLink(
                         destination: $authViewModel.authorizedView.wrappedValue,
@@ -61,7 +61,8 @@ struct LoginView: View{
                 })
             }
         }
-        .background(Color.blue)
+        .navigationBarBackButtonHidden(true)
+    
      
    
     }
