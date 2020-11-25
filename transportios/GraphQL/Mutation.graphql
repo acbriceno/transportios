@@ -15,3 +15,18 @@ mutation baseLogin($email: String!, $password: String!){
 }
 }
 
+
+mutation scanPass($passId: String!, $operatorRouteId: String!, $scanningStopId: String!){
+    scanPass(passId: $passId, operatorRouteId: $operatorRouteId, scanningStopId: $scanningStopId){
+        status
+        code
+        ... on PassResponse{
+            pass{
+                id
+                redeemDate
+                redeemed
+            }
+        }
+
+    }
+}

@@ -439,6 +439,284 @@ public final class BaseLoginMutation: GraphQLMutation {
   }
 }
 
+public final class ScanPassMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation scanPass($passId: String!, $operatorRouteId: String!, $scanningStopId: String!) {
+      scanPass(passId: $passId, operatorRouteId: $operatorRouteId, scanningStopId: $scanningStopId) {
+        __typename
+        status
+        code
+        ... on PassResponse {
+          pass {
+            __typename
+            id
+            redeemDate
+            redeemed
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "scanPass"
+
+  public var passId: String
+  public var operatorRouteId: String
+  public var scanningStopId: String
+
+  public init(passId: String, operatorRouteId: String, scanningStopId: String) {
+    self.passId = passId
+    self.operatorRouteId = operatorRouteId
+    self.scanningStopId = scanningStopId
+  }
+
+  public var variables: GraphQLMap? {
+    return ["passId": passId, "operatorRouteId": operatorRouteId, "scanningStopId": scanningStopId]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("scanPass", arguments: ["passId": GraphQLVariable("passId"), "operatorRouteId": GraphQLVariable("operatorRouteId"), "scanningStopId": GraphQLVariable("scanningStopId")], type: .object(ScanPass.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(scanPass: ScanPass? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "scanPass": scanPass.flatMap { (value: ScanPass) -> ResultMap in value.resultMap }])
+    }
+
+    public var scanPass: ScanPass? {
+      get {
+        return (resultMap["scanPass"] as? ResultMap).flatMap { ScanPass(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "scanPass")
+      }
+    }
+
+    public struct ScanPass: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["StopResponse", "StopsResponse", "OperatorRouteResponse", "OperatorRoutesResponse", "OperatorResponse", "PassResponse", "CommuterResponse", "BareOperatorResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLTypeCase(
+            variants: ["PassResponse": AsPassResponse.selections],
+            default: [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("status", type: .nonNull(.scalar(Bool.self))),
+              GraphQLField("code", type: .nonNull(.scalar(String.self))),
+            ]
+          )
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public static func makeStopResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "StopResponse", "status": status, "code": code])
+      }
+
+      public static func makeStopsResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "StopsResponse", "status": status, "code": code])
+      }
+
+      public static func makeOperatorRouteResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "OperatorRouteResponse", "status": status, "code": code])
+      }
+
+      public static func makeOperatorRoutesResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "OperatorRoutesResponse", "status": status, "code": code])
+      }
+
+      public static func makeOperatorResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "OperatorResponse", "status": status, "code": code])
+      }
+
+      public static func makeCommuterResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "CommuterResponse", "status": status, "code": code])
+      }
+
+      public static func makeBareOperatorResponse(status: Bool, code: String) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "BareOperatorResponse", "status": status, "code": code])
+      }
+
+      public static func makePassResponse(status: Bool, code: String, pass: AsPassResponse.Pass? = nil) -> ScanPass {
+        return ScanPass(unsafeResultMap: ["__typename": "PassResponse", "status": status, "code": code, "pass": pass.flatMap { (value: AsPassResponse.Pass) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var status: Bool {
+        get {
+          return resultMap["status"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "status")
+        }
+      }
+
+      public var code: String {
+        get {
+          return resultMap["code"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "code")
+        }
+      }
+
+      public var asPassResponse: AsPassResponse? {
+        get {
+          if !AsPassResponse.possibleTypes.contains(__typename) { return nil }
+          return AsPassResponse(unsafeResultMap: resultMap)
+        }
+        set {
+          guard let newValue = newValue else { return }
+          resultMap = newValue.resultMap
+        }
+      }
+
+      public struct AsPassResponse: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["PassResponse"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("status", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("code", type: .nonNull(.scalar(String.self))),
+            GraphQLField("pass", type: .object(Pass.selections)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(status: Bool, code: String, pass: Pass? = nil) {
+          self.init(unsafeResultMap: ["__typename": "PassResponse", "status": status, "code": code, "pass": pass.flatMap { (value: Pass) -> ResultMap in value.resultMap }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var status: Bool {
+          get {
+            return resultMap["status"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "status")
+          }
+        }
+
+        public var code: String {
+          get {
+            return resultMap["code"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "code")
+          }
+        }
+
+        public var pass: Pass? {
+          get {
+            return (resultMap["pass"] as? ResultMap).flatMap { Pass(unsafeResultMap: $0) }
+          }
+          set {
+            resultMap.updateValue(newValue?.resultMap, forKey: "pass")
+          }
+        }
+
+        public struct Pass: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Pass"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("redeemDate", type: .nonNull(.scalar(String.self))),
+              GraphQLField("redeemed", type: .nonNull(.scalar(Bool.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, redeemDate: String, redeemed: Bool) {
+            self.init(unsafeResultMap: ["__typename": "Pass", "id": id, "redeemDate": redeemDate, "redeemed": redeemed])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          public var redeemDate: String {
+            get {
+              return resultMap["redeemDate"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "redeemDate")
+            }
+          }
+
+          public var redeemed: Bool {
+            get {
+              return resultMap["redeemed"]! as! Bool
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "redeemed")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class StopsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =

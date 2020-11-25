@@ -16,7 +16,7 @@ class OperatorPassScanner: ObservableObject{
     init(){
         DispatchQueue.global(qos: .userInteractive).async {
             self.loadStops()
-            self.loadOperatorRoutes()
+            
             
         
         }
@@ -57,6 +57,7 @@ class OperatorPassScanner: ObservableObject{
                         let tempStop = Stop(stop: stop)
                         self.stops.append(tempStop)
                     }
+                    self.loadOperatorRoutes()
                 }
             }
                 
@@ -76,11 +77,17 @@ class OperatorPassScanner: ObservableObject{
                 print(status)
                 if(status){
                     let operatorRoutesContainer = graphQLResult.data?.operatorRoutes.asOperatorRoutesResponse?.operatorRoutes
+                    var tempOpRoutes = [OperatorRoute]()
                     for operatorRoute in operatorRoutesContainer!{
                         //print(operatorRoute.jsonObject)
                         let tempRoute = OperatorRoute(operatorRoute: operatorRoute)
-                        self.operatorRoutes.append(tempRoute)
+                        //self.operatorRoutes.append(tempRoute)
+                        tempOpRoutes.append(tempRoute)
                     }
+                    DispatchQueue.main.async {
+                        self.operatorRoutes = tempOpRoutes
+                    }
+                    
                 }
             }
          

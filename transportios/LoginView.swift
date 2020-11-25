@@ -19,7 +19,6 @@ struct LoginView: View{
 
         NavigationView{
             VStack{
-                HStack{
                     NavigationLink(
                         destination: $authViewModel.authorizedView.wrappedValue,
                         isActive: $authViewModel.isAuthenticated
@@ -27,30 +26,32 @@ struct LoginView: View{
                         EmptyView()
 
                     }
-                }
+                
                             
-                Text("")
-                HStack{
-                    VStack{
-                        Text("Email")
-                        Text("Password")
-                       
-                    }
+                Text("Belize Transport")
+                    .padding()
+                    .font(.title)
+                        .foregroundColor(Color.white)
+                        .frame(width: UIScreen.main.bounds.width, height: 80)
+                    .background(Color.blue)
+                    .offset(y: -UIScreen.main.bounds.height/7)
+
                     VStack{
                         TextField(
-                            "",
+                            "Email",
                             text: $email
                         )
-                        .border(Color.black)
+                        .border(Color.blue)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                         
-                        SecureField("", text: $password)
-                            .border(Color.black)
+                        SecureField("Password", text: $password)
+                            .border(Color.blue)
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                        
-                    }
 
                 }.padding(/*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 

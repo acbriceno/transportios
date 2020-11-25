@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
-import CodeScanner
 struct ContentView: View {
     
     var body: some View {
       
         VStack{
-        Text("Content")
-            .background(Color.blue)
+            Text("Content")
+            .padding()
+                .foregroundColor(Color.white)
+                .frame(width: UIScreen.main.bounds.width - 10, height: 100)
+                .background(Color.blue)
+            .cornerRadius(20)
         }
    
 

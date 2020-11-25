@@ -18,6 +18,7 @@ struct OperatorPassScanerView: View {
     @State var selectedStop = Stop()
     @State private var scanReady = false
     @State private var bothSelected = false
+    var opsRouteVM = OpRouteScannerViewModel(scanningStop: "",  operatorRouteId: "")
     var body: some View {
         VStack{
             VStack{
@@ -69,6 +70,8 @@ struct OperatorPassScanerView: View {
                     if(bothSelected){
                         Section{
                             Button("Scan Pass", action: {
+                                self.opsRouteVM.scanningStopId = selectedStop.id
+                                self.opsRouteVM.operatorRouteId = selectedRoute.id
                                 self.scanReady = true
                             })
                         }
@@ -78,7 +81,7 @@ struct OperatorPassScanerView: View {
             }
         }
             NavigationLink(
-                destination: ScannerTestView(),
+                destination: OpRouteScannerView(opRouteScannerVM: opsRouteVM),
                 isActive: $scanReady
                 ){
                 EmptyView()
