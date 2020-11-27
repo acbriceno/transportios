@@ -17,15 +17,21 @@ struct LoginView: View{
 
     var body: some View {
 
-        VStack{
+        ZStack{
+            
+            if(authViewModel.isLoggedIn()){
+                authViewModel.authorizedView
+            }else{
+            
+            
             VStack{
-                    NavigationLink(
-                        destination: $authViewModel.authorizedView.wrappedValue,
-                        isActive: $authViewModel.isAuthenticated
-                        ){
-                        EmptyView()
-
-                    }
+//                    NavigationLink(
+//                        destination: $authViewModel.authorizedView.wrappedValue,
+//                        isActive: $authViewModel.isAuthenticated
+//                        ){
+//                        EmptyView()
+//
+//                    }
                 
                             
                 Text("Belize Transport")
@@ -59,9 +65,11 @@ struct LoginView: View{
                 Button("Log In", action: {
                     authViewModel.authenticate(email: email, password: password)
                 })
-            }
+            } //.navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
+       
+ 
+        }
     
      
    

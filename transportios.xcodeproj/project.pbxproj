@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1F1E4BD6256EED8A003C8C46 /* NavManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BD5256EED8A003C8C46 /* NavManagerView.swift */; };
+		1F1E4BD9256F6D75003C8C46 /* CommuterTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BD8256F6D75003C8C46 /* CommuterTabView.swift */; };
+		1F1E4BDC256F73B9003C8C46 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BDB256F73B9003C8C46 /* ScheduleView.swift */; };
+		1F1E4BDF256F744D003C8C46 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BDE256F744D003C8C46 /* ScheduleViewModel.swift */; };
+		1F1E4BE2257004A7003C8C46 /* ScheduleTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BE1257004A7003C8C46 /* ScheduleTabView.swift */; };
+		1F1E4BE6257027DD003C8C46 /* ScheduleTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BE5257027DD003C8C46 /* ScheduleTabViewModel.swift */; };
+		1F1E4BF32570C1CB003C8C46 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E4BF22570C1CB003C8C46 /* API.swift */; };
 		1F5BDF7E2569A87400D44240 /* transportiosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5BDF7D2569A87400D44240 /* transportiosApp.swift */; };
 		1F5BDF802569A87400D44240 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5BDF7F2569A87400D44240 /* ContentView.swift */; };
 		1F5BDF822569A87500D44240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5BDF812569A87500D44240 /* Assets.xcassets */; };
@@ -16,7 +22,6 @@
 		1F5F59B2256E1D9E006F6129 /* OpRouteScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F59B1256E1D9E006F6129 /* OpRouteScannerView.swift */; };
 		1F8ABC382569A9E700351224 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 1F8ABC372569A9E700351224 /* Apollo */; };
 		1F8ABC3E2569AAA300351224 /* Query.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1F8ABC3D2569AAA300351224 /* Query.graphql */; };
-		1F8ABC462569AC3C00351224 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC452569AC3C00351224 /* API.swift */; };
 		1F8ABC49256A14D500351224 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC48256A14D500351224 /* Network.swift */; };
 		1F8ABC4C256A155400351224 /* NetworkInterceptorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */; };
 		1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */; };
@@ -32,10 +37,19 @@
 		1FCBD200256D587A0047DB21 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 1FCBD1FF256D587A0047DB21 /* CodeScanner */; };
 		1FCBD204256D671A0047DB21 /* CarBode in Frameworks */ = {isa = PBXBuildFile; productRef = 1FCBD203256D671A0047DB21 /* CarBode */; };
 		1FCBD207256D67420047DB21 /* ScannerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCBD206256D67420047DB21 /* ScannerTestView.swift */; };
+		1FE66EEA2571886C0030C0E7 /* OperatorTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE66EE92571886C0030C0E7 /* OperatorTabView.swift */; };
+		1FE66EED25718DEF0030C0E7 /* OperatorTabSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE66EEC25718DEF0030C0E7 /* OperatorTabSettings.swift */; };
+		1FE66EF02571930C0030C0E7 /* CommuterTabSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE66EEF2571930C0030C0E7 /* CommuterTabSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F1E4BD5256EED8A003C8C46 /* NavManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavManagerView.swift; sourceTree = "<group>"; };
+		1F1E4BD8256F6D75003C8C46 /* CommuterTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuterTabView.swift; sourceTree = "<group>"; };
+		1F1E4BDB256F73B9003C8C46 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		1F1E4BDE256F744D003C8C46 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		1F1E4BE1257004A7003C8C46 /* ScheduleTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabView.swift; sourceTree = "<group>"; };
+		1F1E4BE5257027DD003C8C46 /* ScheduleTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTabViewModel.swift; sourceTree = "<group>"; };
+		1F1E4BF22570C1CB003C8C46 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1F5BDF7A2569A87400D44240 /* transportios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = transportios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5BDF7D2569A87400D44240 /* transportiosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transportiosApp.swift; sourceTree = "<group>"; };
 		1F5BDF7F2569A87400D44240 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,7 +59,6 @@
 		1F5F59AE256E1B82006F6129 /* OpRouteScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpRouteScannerViewModel.swift; sourceTree = "<group>"; };
 		1F5F59B1256E1D9E006F6129 /* OpRouteScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpRouteScannerView.swift; sourceTree = "<group>"; };
 		1F8ABC3D2569AAA300351224 /* Query.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Query.graphql; sourceTree = "<group>"; };
-		1F8ABC452569AC3C00351224 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1F8ABC48256A14D500351224 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1F8ABC4B256A155400351224 /* NetworkInterceptorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptorProvider.swift; sourceTree = "<group>"; };
 		1F8ABC4E256A158300351224 /* TokenAddingInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenAddingInterceptor.swift; sourceTree = "<group>"; };
@@ -59,6 +72,9 @@
 		1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorRoute.swift; sourceTree = "<group>"; };
 		1FAEBDB6256B7D090035D991 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		1FCBD206256D67420047DB21 /* ScannerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerTestView.swift; sourceTree = "<group>"; };
+		1FE66EE92571886C0030C0E7 /* OperatorTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTabView.swift; sourceTree = "<group>"; };
+		1FE66EEC25718DEF0030C0E7 /* OperatorTabSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorTabSettings.swift; sourceTree = "<group>"; };
+		1FE66EEF2571930C0030C0E7 /* CommuterTabSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuterTabSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +91,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1E4BE82570B9FE003C8C46 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				1FCBD206256D67420047DB21 /* ScannerTestView.swift */,
+				1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */,
+				1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */,
+				1FE66EE92571886C0030C0E7 /* OperatorTabView.swift */,
+				1FE66EEC25718DEF0030C0E7 /* OperatorTabSettings.swift */,
+				1F5F59AE256E1B82006F6129 /* OpRouteScannerViewModel.swift */,
+				1F5F59B1256E1D9E006F6129 /* OpRouteScannerView.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		1F1E4BE92570BA0E003C8C46 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1F8ABC74256A204300351224 /* AccountManager.swift */,
+				1F8ABC82256AC6C200351224 /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		1F1E4BEB2570BAA8003C8C46 /* Commuter */ = {
+			isa = PBXGroup;
+			children = (
+				1F1E4BED2570BAC9003C8C46 /* ScheduleTab */,
+				1F1E4BD8256F6D75003C8C46 /* CommuterTabView.swift */,
+			);
+			path = Commuter;
+			sourceTree = "<group>";
+		};
+		1F1E4BED2570BAC9003C8C46 /* ScheduleTab */ = {
+			isa = PBXGroup;
+			children = (
+				1F1E4BDB256F73B9003C8C46 /* ScheduleView.swift */,
+				1F1E4BDE256F744D003C8C46 /* ScheduleViewModel.swift */,
+				1F1E4BE1257004A7003C8C46 /* ScheduleTabView.swift */,
+				1F1E4BE5257027DD003C8C46 /* ScheduleTabViewModel.swift */,
+				1FE66EEF2571930C0030C0E7 /* CommuterTabSettings.swift */,
+			);
+			path = ScheduleTab;
+			sourceTree = "<group>";
+		};
+		1F1E4BEE2570BAE3003C8C46 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1FAEBDB6256B7D090035D991 /* Stop.swift */,
+				1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1F5BDF712569A87400D44240 = {
 			isa = PBXGroup;
 			children = (
@@ -95,24 +164,18 @@
 			isa = PBXGroup;
 			children = (
 				1F5BDF7D2569A87400D44240 /* transportiosApp.swift */,
-				1F5BDF7F2569A87400D44240 /* ContentView.swift */,
-				1FCBD206256D67420047DB21 /* ScannerTestView.swift */,
-				1F8ABC86256B357700351224 /* OperatorPassScannerView.swift */,
-				1F8ABC89256B488D00351224 /* OperatorPassScaner.swift */,
-				1F5F59AE256E1B82006F6129 /* OpRouteScannerViewModel.swift */,
-				1F5F59B1256E1D9E006F6129 /* OpRouteScannerView.swift */,
-				1FAEBDB6256B7D090035D991 /* Stop.swift */,
-				1F8ABC74256A204300351224 /* AccountManager.swift */,
-				1F8ABC82256AC6C200351224 /* LoginView.swift */,
+				1F1E4BF22570C1CB003C8C46 /* API.swift */,
 				1F1E4BD5256EED8A003C8C46 /* NavManagerView.swift */,
-				1F8ABC71256A1B5A00351224 /* Query.swift */,
-				1F8ABC452569AC3C00351224 /* API.swift */,
+				1F5BDF7F2569A87400D44240 /* ContentView.swift */,
+				1F1E4BE82570B9FE003C8C46 /* Scanner */,
+				1F1E4BEE2570BAE3003C8C46 /* Models */,
+				1F1E4BE92570BA0E003C8C46 /* Auth */,
+				1F1E4BEB2570BAA8003C8C46 /* Commuter */,
 				1F5BDF862569A87500D44240 /* Info.plist */,
 				1F8ABC3C2569AA8D00351224 /* GraphQL */,
 				1F8ABC7F256A2A2300351224 /* ApolloNet */,
 				1F5BDF832569A87500D44240 /* Preview Content */,
 				1F5BDF812569A87500D44240 /* Assets.xcassets */,
-				1FAEBDB2256B73C60035D991 /* OperatorRoute.swift */,
 			);
 			path = transportios;
 			sourceTree = "<group>";
@@ -128,6 +191,7 @@
 		1F8ABC3C2569AA8D00351224 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				1F8ABC71256A1B5A00351224 /* Query.swift */,
 				1F8ABC3D2569AAA300351224 /* Query.graphql */,
 				1F8ABC7B256A297900351224 /* Mutation.graphql */,
 			);
@@ -250,15 +314,23 @@
 			files = (
 				1F5BDF802569A87400D44240 /* ContentView.swift in Sources */,
 				1FCBD207256D67420047DB21 /* ScannerTestView.swift in Sources */,
-				1F8ABC462569AC3C00351224 /* API.swift in Sources */,
 				1F8ABC4F256A158300351224 /* TokenAddingInterceptor.swift in Sources */,
 				1F8ABC87256B357700351224 /* OperatorPassScannerView.swift in Sources */,
+				1F1E4BDC256F73B9003C8C46 /* ScheduleView.swift in Sources */,
 				1F8ABC4C256A155400351224 /* NetworkInterceptorProvider.swift in Sources */,
 				1F8ABC72256A1B5A00351224 /* Query.swift in Sources */,
 				1F8ABC75256A204300351224 /* AccountManager.swift in Sources */,
 				1FAEBDB7256B7D090035D991 /* Stop.swift in Sources */,
+				1F1E4BDF256F744D003C8C46 /* ScheduleViewModel.swift in Sources */,
 				1F8ABC49256A14D500351224 /* Network.swift in Sources */,
+				1F1E4BD9256F6D75003C8C46 /* CommuterTabView.swift in Sources */,
+				1F1E4BE2257004A7003C8C46 /* ScheduleTabView.swift in Sources */,
+				1F1E4BE6257027DD003C8C46 /* ScheduleTabViewModel.swift in Sources */,
+				1FE66EEA2571886C0030C0E7 /* OperatorTabView.swift in Sources */,
+				1FE66EED25718DEF0030C0E7 /* OperatorTabSettings.swift in Sources */,
+				1FE66EF02571930C0030C0E7 /* CommuterTabSettings.swift in Sources */,
 				1F1E4BD6256EED8A003C8C46 /* NavManagerView.swift in Sources */,
+				1F1E4BF32570C1CB003C8C46 /* API.swift in Sources */,
 				1FAEBDB3256B73C60035D991 /* OperatorRoute.swift in Sources */,
 				1F5BDF7E2569A87400D44240 /* transportiosApp.swift in Sources */,
 				1F5F59AF256E1B82006F6129 /* OpRouteScannerViewModel.swift in Sources */,

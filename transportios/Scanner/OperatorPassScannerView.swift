@@ -18,10 +18,9 @@ struct OperatorPassScanerView: View {
     @State var selectedStop = Stop()
     @State private var scanReady = false
     @State private var bothSelected = false
-    @State private var logoutState = false
     var opsRouteVM = OpRouteScannerViewModel(scanningStop: "",  operatorRouteId: "")
     var body: some View {
-        VStack{
+        NavigationView{
             VStack{
 
             Form{
@@ -36,6 +35,7 @@ struct OperatorPassScanerView: View {
                             VStack{
                                 Text("Departure").padding(2)
                                 Text("Arrival").padding(2)
+                                    
                             }
                             VStack{
                                 Text(opsModel.getStops(stopId: operatorRoute.route.startStopId))
@@ -46,6 +46,7 @@ struct OperatorPassScanerView: View {
                             }
                             
                         }.padding()
+                        
       
                     }
                 }
@@ -55,7 +56,7 @@ struct OperatorPassScanerView: View {
                     opsModel.createScanningStops(operatorRouteId: selectedRoute.id)
                     })
                 
-                }
+                }.font(.subheadline)
                 
                 
                 
@@ -75,7 +76,7 @@ struct OperatorPassScanerView: View {
                         self.bothSelected = true
                    })
                     }
-                    
+                    .font(.subheadline)
                     if(bothSelected){
                         Section{
                             Button("Scan Pass", action: {
@@ -83,15 +84,11 @@ struct OperatorPassScanerView: View {
                                 self.opsRouteVM.operatorRouteId = selectedRoute.id
                                 self.scanReady = true
                             })
-                        }
+                        }.font(.subheadline)
                     }
             }
                 
-                Section{
-                    Button("Log out", action: {
-                        logoutState = true
-                    })
-                }
+
                 
                 
         }
@@ -102,17 +99,11 @@ struct OperatorPassScanerView: View {
                 EmptyView()
             }
                 
-            NavigationLink(
-                destination: LoginView(authViewModel: AccountManager()),
-                isActive: $logoutState
-                ){
-                EmptyView()
-            }
         
         }
-        .navigationBarTitle("Pass Scanner")
+        
         }
-        .navigationBarBackButtonHidden(true)
+       
     }
 }
 

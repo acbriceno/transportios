@@ -7,18 +7,17 @@
 
 import SwiftUI
 struct ContentView: View {
-    
-    var body: some View {
-      
-        VStack{
-            Text("Content")
-            .padding()
-                .foregroundColor(Color.white)
-                .frame(width: UIScreen.main.bounds.width - 10, height: 100)
-                .background(Color.blue)
-            .cornerRadius(20)
-        }
+    @State var searchParam = ""
    
+    var body: some View {
+       
+        ZStack{
+            
+            if true{
+                Text("Me no know")
+            }else{
+            }
+        }
 
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 class AccountManager: ObservableObject{
     let userAccount = UserDefaults.standard
     @Published  var isAuthenticated: Bool = false
-    private var authorizedViews: [String: AnyView]  = ["OPERATOR": AnyView(OperatorPassScanerView()), "COMMUTER" : AnyView(ContentView()), "": AnyView(ContentView())]
+    private var authorizedViews: [String: AnyView]  = ["OPERATOR": AnyView(OperatorTabView(isLoggedIn: true)), "COMMUTER" : AnyView(CommuterTabView(isLoggedIn: true)), "": AnyView(ContentView())]
     @Published var authorizedView: AnyView = AnyView(ContentView())
     
 //    init(){
@@ -66,9 +66,17 @@ class AccountManager: ObservableObject{
     
     func logout() {
         userAccount.set(nil, forKey:"sessionToken")
+        print("logging out")
         if let token =  userAccount.string(forKey: "sessionToken"){
             print(token)
         }
+    }
+    
+    func isLoggedIn() -> Bool{
+        if userAccount.string(forKey: "sessionToken") != nil{
+            return true
+        }
+        return false
     }
     
     //MARK: Util(s)

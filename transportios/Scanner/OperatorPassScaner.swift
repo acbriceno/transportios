@@ -14,7 +14,9 @@ class OperatorPassScanner: ObservableObject{
     
     
     init(){
+        print("in init")
         DispatchQueue.global(qos: .userInteractive).async {
+            print("stops init")
             self.loadStops()
             
             
@@ -45,7 +47,9 @@ class OperatorPassScanner: ObservableObject{
     }
     
     func loadStops(){
+        print("loading stops")
         Network.shared.apollo.fetch(query: StopsQuery()) { result in
+            print("got stops network")
           switch result {
           case .success(let graphQLResult):
             //print("Success! Result: \(graphQLResult)")
@@ -87,6 +91,7 @@ class OperatorPassScanner: ObservableObject{
                     DispatchQueue.main.async {
                         self.objectWillChange.send()
                         self.operatorRoutes = tempOpRoutes
+                        print(self.operatorRoutes.count)
                     }
                     
                 }

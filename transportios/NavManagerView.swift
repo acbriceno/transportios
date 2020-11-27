@@ -18,7 +18,18 @@ struct NavManagerView: View {
                 ){
                 EmptyView()
             }
+
+            
+//            NavigationLink(
+//                destination: CommuterTabView(),
+//                isActive: $login
+//                ){
+//                EmptyView()
+//            }
         }
+        .navigationBarTitle(Text(""), displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
    
 
     }
