@@ -37,16 +37,40 @@ struct ScheduleTabView: View {
                 }
             }
             //.offset(y: -UIScreen.main.bounds.height/9)
-            List{
-                ForEach(scheduleTabVM.displayRoutes, id: \.self) {
-                    displayRoute in
-                    
-                    ScheduleView(scheduleViewVM: ScheduleViewModel(displayRoute: displayRoute))
-                    
+//            List{
+//                ForEach(scheduleTabVM.displayRoutes, id: \.self) {
+//                    displayRoute in
+//
+//                    ScheduleView(scheduleViewVM: ScheduleViewModel(displayRoute: displayRoute))
+//
+//                }
+//
+//            }
+            List(scheduleTabVM.displayRoutes.filter({
+                //var text = self.searchParam.uppercased()
+                if(searchParam.isEmpty){
+                    return true
+                }else{
+                    if ($0.startStopName.uppercased().contains(searchParam.uppercased())) || ($0.endStopName.uppercased().contains(searchParam.uppercased())){
+                        return true
+                    }else{
+                        for intermediary in $0.intermediaries {
+                            if(intermediary.stopName.uppercased().contains(searchParam.uppercased())){
+                                return true
+                            }
+                        }
+                        return false
+                    }
                 }
-
+                //searchParam.isEmpty ? true : ($0.startStopName.contains(searchParam))
+                
+            })) { displayRoute in
+                ScheduleView(scheduleViewVM: ScheduleViewModel(displayRoute: displayRoute))
             }
-           
+            
+       //    List(todoItems.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
+              //  Text(item.name)
+        //    }
   
             
             

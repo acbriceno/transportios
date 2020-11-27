@@ -100,7 +100,7 @@ class ScheduleTabViewModel: ObservableObject {
     }
 }
 
-struct DisplayRoute: Hashable {
+struct DisplayRoute: Hashable, Identifiable {
     var id: String
     var startStopName: String
     var endStopName: String

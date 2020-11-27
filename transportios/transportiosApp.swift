@@ -15,11 +15,11 @@ struct transportiosApp: App {
     var body: some Scene {
         //let _: () = am.authenticate(email: "as", password: "asd")
         WindowGroup {
-            LoginView(authViewModel: am)
+            //LoginView(authViewModel: am)
             //ContentView()
             //ScannerTestView()
             //NavManagerView()
-            //CommuterTabView()
+            ScheduleTabView(searchParam: "")
         }
     }
 }
