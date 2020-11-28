@@ -15,9 +15,12 @@ struct ScheduleView: View {
                 
                 Text(scheduleViewVM.schedule.departureTime)
                         .font(.caption)
-                        .offset(x: -UIScreen.main.bounds.width/3)
+                    .offset(x: -UIScreen.main.bounds.width/3.5)
                       
-                
+                Text(scheduleViewVM.schedule.day)
+                    .font(.caption)
+                    .foregroundColor(Color.primary)
+                    .offset(x: -UIScreen.main.bounds.width/11)
                 
                 Text(scheduleViewVM.schedule.arrivalTime)
                         .font(.caption)

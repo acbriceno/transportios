@@ -6,10 +6,30 @@
 //
 
 import Foundation
+import SwiftUI
 class ScheduleTabViewModel: ObservableObject {
     var stops =  [Stop]()
     var routes = [OperatorRoute]()
     @Published var displayRoutes  = [DisplayRoute]()
+    var historyRoutes = [DisplayRoute]()
+    var days: [DayControl] = [DayControl(name: "SUNDAY", shortName: "SUN") ,DayControl(name: "MONDAY", shortName: "MON"),
+                                            DayControl(name: "TUESDAY", shortName: "TUE"),
+                                            DayControl(name: "WEDNESDAY", shortName: "WED"),
+                                            DayControl(name: "THURSDAY", shortName: "THU"),
+                                            DayControl(name: "FRIDAY", shortName: "FRI"), DayControl(name: "SATURDAY", shortName: "SAT")]
+    
+    var searchParam = ""
+    var search: String{
+        get{
+            return searchParam
+        }
+        set(newSearch){
+            print(newSearch)
+            searchParam = newSearch
+            self.applyFilters()
+        }
+        
+    }
     
     init(){
         DispatchQueue.global(qos: .userInteractive).async {
@@ -72,11 +92,16 @@ class ScheduleTabViewModel: ObservableObject {
 
      
                         }
-                        DispatchQueue.main.async {
-                            self.objectWillChange.send()
-                            self.displayRoutes = tempDisplayRoutes
-                            print(self.displayRoutes.count)
-                        }
+                    
+                        
+                           
+                        self.displayRoutes = tempDisplayRoutes
+                        self.historyRoutes = tempDisplayRoutes
+                       // print(self.displayRoutes)
+                        var today = Date()
+                        self.selectDay(index: today.get(.weekday) - 1)
+                        print(today.get(.weekday))
+                        
                         //update displayRoutes and update View
                     }
 
@@ -98,8 +123,72 @@ class ScheduleTabViewModel: ObservableObject {
         }
         return ""
     }
-}
+    func selectDay(index: Int){
+        
+            self.days[index].isSelected = !self.days[index].isSelected
+            self.days[index].color = self.days[index].isSelected ?  Color.blue : Color.gray
+            applyFilters()
 
+    }
+    
+    func applyFilters(){
+        var dayFilteredRoutes = applyDayFilter(routes: self.historyRoutes)
+        var searchFilterRoutes = applySeachFilter(routes: dayFilteredRoutes)
+        DispatchQueue.main.async {
+            self.objectWillChange.send()
+            self.displayRoutes = searchFilterRoutes
+        }
+    }
+    
+    func applyDayFilter(routes: [DisplayRoute]) -> [DisplayRoute]{
+        let dayFilter = days.filter({
+            return $0.isSelected
+        })
+        print(dayFilter.count)
+        if(dayFilter.count == 0){
+                //self.displayRoutes = self.historyRoutes
+            return routes
+            
+        }else{
+            var tempDisplayRoutes = [DisplayRoute]()
+            for route in routes {
+                for day in dayFilter{
+                    if(route.day == day.name){
+                        tempDisplayRoutes.append(route)
+                        
+                    }
+                }
+            }
+               return tempDisplayRoutes
+                //self.displayRoutes = tempDisplayRoutes
+            
+        }
+    }
+
+
+func applySeachFilter(routes: [DisplayRoute]) -> [DisplayRoute]{
+    var tempRoutes = [DisplayRoute]()
+    if(searchParam.isEmpty){
+        return routes
+    }else{
+        for route in routes{
+            if (route.startStopName.uppercased().contains(searchParam.uppercased()) || route.endStopName.uppercased().contains(searchParam.uppercased()) ) {
+                tempRoutes.append(route)
+            }else{
+                for intermediary in route.intermediaries {
+                    if(intermediary.stopName.uppercased().contains(searchParam.uppercased())){
+                        tempRoutes.append(route)
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
+    return tempRoutes
+}
+    
+}
 struct DisplayRoute: Hashable, Identifiable {
     var id: String
     var startStopName: String
@@ -132,3 +221,12 @@ struct DisplayIntermediary: Hashable{
     }
 }
 
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
+    }
+}
