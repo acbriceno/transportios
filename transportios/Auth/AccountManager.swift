@@ -11,7 +11,7 @@ class AccountManager: ObservableObject{
     let userAccount = UserDefaults.standard
     @Published  var isAuthenticated: Bool = false
     private var authorizedViews: [String: AnyView]  = ["OPERATOR": AnyView(OperatorTabView(isLoggedIn: true)), "COMMUTER" : AnyView(CommuterTabView(isLoggedIn: true)), "": AnyView(ContentView())]
-    @Published var authorizedView: AnyView = AnyView(ContentView())
+    var authorizedView: AnyView = AnyView(ContentView())
     
 //    init(){
 //
@@ -73,9 +73,12 @@ class AccountManager: ObservableObject{
     }
     
     func isLoggedIn() -> Bool{
-        if userAccount.string(forKey: "sessionToken") != nil{
+        if let token =  userAccount.string(forKey: "sessionToken"){
+            print(token)
+            self.authorizedView = self.getRole()
             return true
         }
+      
         return false
     }
     
